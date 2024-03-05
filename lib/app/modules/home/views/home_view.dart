@@ -37,7 +37,6 @@ class HomeView extends GetView<HomeController> {
                         ProductCard(),
                         ProductCard(),
                         ProductCard(),
-                        ProductCard(),
                       ]),
                 ),
               ],
