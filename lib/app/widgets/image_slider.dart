@@ -6,6 +6,9 @@ class ImageSlider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.network(src);
+    return Image.network(
+      src,
+      fit: BoxFit.cover,
+    );
   }
 }
