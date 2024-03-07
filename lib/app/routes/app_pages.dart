@@ -1,7 +1,11 @@
 import 'package:get/get.dart';
 
+import '../modules/detail_page/bindings/detail_page_binding.dart';
+import '../modules/detail_page/views/detail_page_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/seller/bindings/seller_binding.dart';
+import '../modules/seller/views/seller_view.dart';
 
 part 'app_routes.dart';
 
@@ -15,6 +19,16 @@ class AppPages {
       name: _Paths.HOME,
       page: () => const HomeView(),
       binding: HomeBinding(),
+    ),
+    GetPage(
+      name: _Paths.SELLER,
+      page: () => const SellerView(),
+      binding: SellerBinding(),
+    ),
+    GetPage(
+      name: _Paths.DETAIL_PAGE,
+      page: () => const DetailPageView(),
+      binding: DetailPageBinding(),
     ),
   ];
 }

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart' show Color, Colors;
 class AppColor {
   const AppColor._();
 
-  static const darkOrange = Color(0xFFEC6813);
+  static const green = Colors.green;
   static const lightOrange = Color(0xFFf8b89a);
 
   static const darkGrey = Color(0xFFA6A3A0);
