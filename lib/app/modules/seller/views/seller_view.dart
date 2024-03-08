@@ -1,9 +1,8 @@
-import 'dart:ffi';
-
 import 'package:admin/app/data/colors.dart';
 import 'package:admin/app/widgets/commmon_button.dart';
 import 'package:admin/app/widgets/input_text_field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 import 'package:get/get.dart';
 
@@ -75,9 +74,11 @@ class SellerView extends GetView<SellerController> {
                             });
                           },
                           child: Center(
-                            child: Icon(Icons.camera_enhance,
-                                size: 50, color: AppColor.green),
-                          ),
+                              child: SvgPicture.asset(
+                            'assets/images/camera.svg',
+                            height: 100,
+                            width: 100,
+                          )),
                         ),
                       ),
                     )
@@ -129,6 +130,8 @@ class SellerView extends GetView<SellerController> {
                               controller.inputValue.value = Value;
                             },
                             textName: "Product Name",
+                            isMaxLines: false,
+                            isType: false,
                           ),
                           SizedBox(
                             height: 15,
@@ -140,6 +143,8 @@ class SellerView extends GetView<SellerController> {
                               controller.inputValue.value = Value;
                             },
                             textName: "About",
+                            isMaxLines: true,
+                            isType: false,
                           ),
                           SizedBox(
                             height: 15,
@@ -151,6 +156,8 @@ class SellerView extends GetView<SellerController> {
                               controller.inputValue.value = Value;
                             },
                             textName: "product Price",
+                            isMaxLines: false,
+                            isType: true,
                           ),
                         ],
                       ),
