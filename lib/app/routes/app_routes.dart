@@ -7,6 +7,9 @@ abstract class Routes {
   static const SELLER = _Paths.SELLER;
   static const DETAIL_PAGE = _Paths.DETAIL_PAGE;
   static const EDIT_PAGE = _Paths.EDIT_PAGE;
+  static const HISTORY = _Paths.HISTORY;
+  static const LOGIN = _Paths.LOGIN;
+  static const REGISTER = _Paths.REGISTER;
 }
 
 abstract class _Paths {
@@ -15,4 +18,7 @@ abstract class _Paths {
   static const SELLER = '/seller';
   static const DETAIL_PAGE = '/detail-page';
   static const EDIT_PAGE = '/edit-page';
+  static const HISTORY = '/history';
+  static const LOGIN = '/login';
+  static const REGISTER = '/register';
 }

@@ -142,23 +142,21 @@ class DetailPageView extends GetView<DetailPageController> {
                 height: 10,
               ),
               SingleChildScrollView(
-                child: Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      CommonButton(
-                        btnButtonWidth: double.infinity,
-                        btnText: 'Edit details',
-                        btnHeight: 50,
-                        btnOnPressed: () {
-                          Get.to(EditPageView());
-                        },
-                      ),
-                      SizedBox(
-                        height: 10,
-                      )
-                    ],
-                  ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    CommonButton(
+                      btnButtonWidth: double.infinity,
+                      btnText: 'Edit details',
+                      btnHeight: 50,
+                      btnOnPressed: () {
+                        Get.to(EditPageView());
+                      },
+                    ),
+                    SizedBox(
+                      height: 10,
+                    )
+                  ],
                 ),
               ),
             ],
