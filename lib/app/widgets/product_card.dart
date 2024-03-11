@@ -1,9 +1,23 @@
+import 'dart:ffi';
+
 import 'package:admin/app/data/colors.dart';
 import 'package:admin/app/widgets/offer_card.dart';
 import 'package:flutter/material.dart';
 
 class ProductCard extends StatelessWidget {
-  const ProductCard({super.key});
+  final String pdName;
+  final String pdPrice;
+  final String pddicPrice;
+  final String pdImage;
+  final offer;
+
+  const ProductCard(
+      {super.key,
+      required this.pdName,
+      required this.pdPrice,
+      required this.pddicPrice,
+      required this.pdImage,
+      required this.offer});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +43,7 @@ class ProductCard extends StatelessWidget {
                   height: MediaQuery.of(context).size.width > 600 ? 300 : 150,
                   width: MediaQuery.of(context).size.height > 600 ? 300 : 140,
                   child: Image.network(
-                    'https://media.istockphoto.com/id/1146517111/photo/taj-mahal-mausoleum-in-agra.jpg?s=612x612&w=0&k=20&c=vcIjhwUrNyjoKbGbAQ5sOcEzDUgOfCsm9ySmJ8gNeRk=',
+                    pdImage,
                     alignment: Alignment.center,
                     fit: BoxFit.contain,
                   ),
@@ -39,7 +53,7 @@ class ProductCard extends StatelessWidget {
             Positioned(
               top: 10,
               left: 10,
-              child: OfferCard(),
+              child: OfferCard(offer: offer),
             ),
             Positioned(
               top: MediaQuery.of(context).size.width > 600 ? 250 : 197,
@@ -64,7 +78,7 @@ class ProductCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Product Name',
+                          pdName,
                           overflow: TextOverflow.ellipsis,
                           maxLines: 1,
                           style: TextStyle(
@@ -76,7 +90,7 @@ class ProductCard extends StatelessWidget {
                         Row(
                           children: [
                             Text(
-                              '₹300',
+                              pddicPrice,
                               style: TextStyle(
                                 fontWeight: FontWeight.w800,
                                 fontSize: 16,
@@ -85,7 +99,7 @@ class ProductCard extends StatelessWidget {
                             ),
                             SizedBox(width: 3),
                             Text(
-                              '₹300',
+                              pdPrice,
                               style: TextStyle(
                                 decoration: TextDecoration.lineThrough,
                                 fontWeight: FontWeight.w100,

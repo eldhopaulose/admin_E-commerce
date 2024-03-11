@@ -13,6 +13,7 @@ class SellerView extends GetView<SellerController> {
   @override
   Widget build(BuildContext context) {
     final SellerController controller = Get.put(SellerController());
+    print(controller.imgUrl.length);
 
     return Scaffold(
       appBar: AppBar(
@@ -70,7 +71,7 @@ class SellerView extends GetView<SellerController> {
                           onTap: () {
                             controller.selectImages().then((_) {
                               // Call the uploadImages function to upload the selected images
-                              controller.uploadImages();
+                              controller.uploadImages(context);
                             });
                           },
                           child: Center(
@@ -163,20 +164,20 @@ class SellerView extends GetView<SellerController> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: DropdownMenu<String>(
-                        width: MediaQuery.of(context).size.width * 0.92,
-                        initialSelection: controller.list.first,
-                        onSelected: (String? value) {
-                          controller.dropdownValue.value = value!;
-                        },
-                        dropdownMenuEntries: controller.list
-                            .map<DropdownMenuEntry<String>>((String value) {
-                          return DropdownMenuEntry<String>(
-                              value: value, label: value);
-                        }).toList(),
-                      ),
-                    ),
+                        padding: const EdgeInsets.all(8.0),
+                        child: DropdownMenu<String>(
+                          width: MediaQuery.of(context).size.width * 0.92,
+                          initialSelection: controller.list.first,
+                          onSelected: (String? value) {
+                            controller.dropdownValue.value = value!;
+                            print(value);
+                          },
+                          dropdownMenuEntries: controller.list
+                              .map<DropdownMenuEntry<String>>((String value) {
+                            return DropdownMenuEntry<String>(
+                                value: value, label: value);
+                          }).toList(),
+                        )),
                     SizedBox(height: 16.0),
                     Padding(
                       padding: const EdgeInsets.only(right: 12, left: 12),

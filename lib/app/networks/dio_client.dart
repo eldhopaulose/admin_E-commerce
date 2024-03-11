@@ -30,11 +30,14 @@ class DioClient {
     if (headers != null) {
       _dio.options.headers.addAll(headers);
     }
+    String? _token = G.Get.find<LoginRes>().email;
     if (endPoints.hasToken()) {
       String? _token = G.Get.find<LoginRes>().token;
       _dio.options.headers
           .addAll({"Authorization": "Bearer ${_token ?? "No Token"}"});
+      print("Token: $_token");
     }
+    print("Token: $_token");
     try {
       switch (endPoints.type()) {
         case ReqType.GET:

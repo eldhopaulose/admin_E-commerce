@@ -13,6 +13,8 @@ class DetailPageView extends GetView<DetailPageController> {
   const DetailPageView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    String id = Get.arguments;
+    print('id: $id');
     return Scaffold(
       appBar: AppBar(
         centerTitle: false,

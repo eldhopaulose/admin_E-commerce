@@ -1,5 +1,6 @@
 import 'package:admin/app/modules/home/views/home_view.dart';
 import 'package:admin/app/networks/network_model/req/login_req.dart';
+import 'package:admin/app/networks/network_model/res/login_res.dart';
 import 'package:admin/app/networks/repo/auth_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -30,6 +31,7 @@ class LoginController extends GetxController {
       password: password.text,
     ));
     if (response != null && response.error == null) {
+      Get.find<LoginRes>().token = response.token;
       Get.to(HomeView());
     } else {
       MotionToast.error(

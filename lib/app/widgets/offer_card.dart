@@ -1,9 +1,9 @@
 import 'package:admin/app/data/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OfferCard extends StatelessWidget {
-  const OfferCard({super.key});
+  final offer;
+  const OfferCard({super.key, required this.offer});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class OfferCard extends StatelessWidget {
       ),
       child: Center(
           child: Text(
-        '30% OFF',
+        offer.toString() + '% off',
         style: TextStyle(
           fontWeight: FontWeight.w800,
           fontSize: 15,

@@ -6,6 +6,8 @@ import 'package:admin/app/networks/network_model/res/login_res.dart';
 import 'package:admin/app/networks/network_model/res/register_res.dart';
 import 'package:dio/dio.dart';
 
+import '../network_model/res/get_user_details.dart';
+
 class AuthRepo {
   final DioClient dioClient = DioClient(Dio());
   Future<RegisterRes?> AuthSignup(RegisterReq registerReq) async {
@@ -61,6 +63,22 @@ class AuthRepo {
       }
     } catch (e) {
       return LoginRes(error: "Unexpected Error");
+    }
+  }
+
+  Future<GetUserDetailsres?> getUserDetails() async {
+    try {
+      final response = await dioClient.mainReqRes(
+        endPoints: EndPoints.getUserDetails,
+      );
+      if (response.statusCode == 200) {
+        final userResponse = GetUserDetailsres.fromJson(response.data);
+        return userResponse;
+      } else {
+        return GetUserDetailsres.fromJson(response.data);
+      }
+    } catch (e) {
+      return GetUserDetailsres(error: "Unexpected Error");
     }
   }
 }
