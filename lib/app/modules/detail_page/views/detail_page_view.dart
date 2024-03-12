@@ -1,6 +1,7 @@
 import 'package:admin/app/data/colors.dart';
 import 'package:admin/app/modules/edit_page/views/edit_page_view.dart';
 import 'package:admin/app/widgets/commmon_button.dart';
+import 'package:admin/app/widgets/detail_image_slider.dart';
 import 'package:admin/app/widgets/image_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
@@ -62,15 +63,10 @@ class DetailPageView extends GetView<DetailPageController> {
                         /// The widgets to display in the [ImageSlideshow].
                         /// Add the sample image file into the images folder
                         children: [
-                          ImageSlider(
-                              src:
-                                  "https://media.istockphoto.com/id/1146517111/photo/taj-mahal-mausoleum-in-agra.jpg?s=612x612&w=0&k=20&c=vcIjhwUrNyjoKbGbAQ5sOcEzDUgOfCsm9ySmJ8gNeRk="),
-                          ImageSlider(
-                              src:
-                                  "https://sb.kaleidousercontent.com/67418/960x550/5d1ca08941/marketing-removebg-1.png"),
-                          ImageSlider(
-                              src:
-                                  "https://res.cloudinary.com/demo/image/upload/e_background_removal/docs/rmv_bgd/dog_couch_orig.png")
+                          for (var image in snapshot.data!.product!.image!)
+                            DetailImageSlider(
+                              src: image!,
+                            )
                         ],
 
                         /// Called whenever the page in the center of the viewport changes.
