@@ -5,7 +5,9 @@ enum EndPoints {
   register,
   getProductList,
   createProduct,
-  getUserDetails
+  getUserDetails,
+  deleteProduct,
+  getSingleProduct,
 }
 
 extension EndPointsData on EndPoints {
@@ -22,6 +24,10 @@ extension EndPointsData on EndPoints {
         path = "admin/products";
       case EndPoints.getUserDetails:
         path = "admin/users/single";
+      case EndPoints.deleteProduct:
+        path = "admin/products";
+      case EndPoints.getSingleProduct:
+        path = "admin/products";
     }
     return path;
   }
@@ -38,6 +44,10 @@ extension EndPointsData on EndPoints {
       case EndPoints.getProductList:
         type = ReqType.GET;
       case EndPoints.getUserDetails:
+        type = ReqType.GET;
+      case EndPoints.deleteProduct:
+        type = ReqType.DELETE;
+      case EndPoints.getSingleProduct:
         type = ReqType.GET;
     }
     return type;
@@ -56,6 +66,10 @@ extension EndPointsData on EndPoints {
         token = false;
       case EndPoints.getUserDetails:
         token = true;
+      case EndPoints.deleteProduct:
+        token = false;
+      case EndPoints.getSingleProduct:
+        token = false;
     }
     return token;
   }

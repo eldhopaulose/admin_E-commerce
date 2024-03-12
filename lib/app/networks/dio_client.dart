@@ -25,6 +25,7 @@ class DioClient {
     required EndPoints endPoints,
     Map<String, dynamic>? data,
     Map<String, dynamic>? headers,
+    String? queryParameters,
   }) async {
     Response response;
     if (headers != null) {
@@ -42,7 +43,9 @@ class DioClient {
       switch (endPoints.type()) {
         case ReqType.GET:
           response = await _dio.get(
-            "$BASE_URl/${endPoints.path()}",
+            queryParameters != null
+                ? "$BASE_URl/${endPoints.path()}/$queryParameters"
+                : "$BASE_URl/${endPoints.path()}",
             queryParameters: data,
           );
           break;
@@ -50,6 +53,11 @@ class DioClient {
           response = await _dio.post(
             "$BASE_URl/${endPoints.path()}",
             data: data,
+          );
+          break;
+        case ReqType.DELETE:
+          response = await _dio.delete(
+            "$BASE_URl/${endPoints.path()}/$queryParameters",
           );
           break;
         default:
@@ -88,4 +96,5 @@ enum ReqType {
   GET,
   POST,
   PUT,
+  DELETE,
 }

@@ -2,6 +2,7 @@ import 'package:admin/app/data/colors.dart';
 import 'package:admin/app/modules/detail_page/views/detail_page_view.dart';
 import 'package:admin/app/modules/history/views/history_view.dart';
 import 'package:admin/app/modules/seller/views/seller_view.dart';
+import 'package:admin/app/networks/network_model/res/get_product_res.dart';
 import 'package:admin/app/widgets/product_card.dart';
 import 'package:flutter/material.dart';
 
@@ -19,6 +20,7 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     Get.put(HomeController());
+    controller.onReady();
     return SafeArea(
       child: Scaffold(
         floatingActionButton: FloatingActionButton(
@@ -120,8 +122,8 @@ class HomeView extends GetView<HomeController> {
                     );
                   },
                 ),
-                FutureBuilder(
-                  future: controller.fetchProductList(),
+                StreamBuilder<GetProductRes?>(
+                  stream: controller.userHomeStream,
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return SizedBox(
@@ -210,7 +212,11 @@ class HomeView extends GetView<HomeController> {
                                           cancelBtnText: 'No',
                                           confirmBtnColor: Colors.green,
                                           onConfirmBtnTap: () {
-                                            print('yes');
+                                            controller.onDeleteProduct(
+                                              snapshot
+                                                  .data!.products![index].sId!,
+                                              context,
+                                            );
                                           },
                                         );
                                       },

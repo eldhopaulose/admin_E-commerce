@@ -118,7 +118,8 @@ class SellerController extends GetxController {
                 title: const Text("Success"),
                 description: const Text("Product created successfully"))
             .show(Get.context!);
-        Get.back(result: HomeController().fetchProductList());
+        Get.find<HomeController>().fetchProductList();
+        Get.back();
       } else {
         MotionToast.error(
                 title: const Text("Error"),

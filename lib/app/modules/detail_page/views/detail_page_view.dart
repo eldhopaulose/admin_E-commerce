@@ -13,6 +13,7 @@ class DetailPageView extends GetView<DetailPageController> {
   const DetailPageView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    Get.put(DetailPageController());
     String id = Get.arguments;
     print('id: $id');
     return Scaffold(
@@ -28,142 +29,154 @@ class DetailPageView extends GetView<DetailPageController> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ImageSlideshow(
-                /// Width of the [ImageSlideshow].
-                width: double.infinity,
+            padding: const EdgeInsets.all(8.0),
+            child: FutureBuilder(
+              future: controller.fetchSingleProduct(id),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasError) {
+                  return Center(
+                    child: Text('Error: ${snapshot.error}'),
+                  );
+                } else {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ImageSlideshow(
+                        /// Width of the [ImageSlideshow].
+                        width: double.infinity,
 
-                /// Height of the [ImageSlideshow].
-                height: 200,
+                        /// Height of the [ImageSlideshow].
+                        height: 200,
 
-                /// The page to show when first creating the [ImageSlideshow].
-                initialPage: 0,
+                        /// The page to show when first creating the [ImageSlideshow].
+                        initialPage: 0,
 
-                /// The color to paint the indicator.
-                indicatorColor: AppColor.green,
+                        /// The color to paint the indicator.
+                        indicatorColor: AppColor.green,
 
-                /// The color to paint behind th indicator.
-                indicatorBackgroundColor: Colors.grey,
+                        /// The color to paint behind th indicator.
+                        indicatorBackgroundColor: Colors.grey,
 
-                /// The widgets to display in the [ImageSlideshow].
-                /// Add the sample image file into the images folder
-                children: [
-                  ImageSlider(
-                      src:
-                          "https://media.istockphoto.com/id/1146517111/photo/taj-mahal-mausoleum-in-agra.jpg?s=612x612&w=0&k=20&c=vcIjhwUrNyjoKbGbAQ5sOcEzDUgOfCsm9ySmJ8gNeRk="),
-                  ImageSlider(
-                      src:
-                          "https://sb.kaleidousercontent.com/67418/960x550/5d1ca08941/marketing-removebg-1.png"),
-                  ImageSlider(
-                      src:
-                          "https://res.cloudinary.com/demo/image/upload/e_background_removal/docs/rmv_bgd/dog_couch_orig.png")
-                ],
+                        /// The widgets to display in the [ImageSlideshow].
+                        /// Add the sample image file into the images folder
+                        children: [
+                          ImageSlider(
+                              src:
+                                  "https://media.istockphoto.com/id/1146517111/photo/taj-mahal-mausoleum-in-agra.jpg?s=612x612&w=0&k=20&c=vcIjhwUrNyjoKbGbAQ5sOcEzDUgOfCsm9ySmJ8gNeRk="),
+                          ImageSlider(
+                              src:
+                                  "https://sb.kaleidousercontent.com/67418/960x550/5d1ca08941/marketing-removebg-1.png"),
+                          ImageSlider(
+                              src:
+                                  "https://res.cloudinary.com/demo/image/upload/e_background_removal/docs/rmv_bgd/dog_couch_orig.png")
+                        ],
 
-                /// Called whenever the page in the center of the viewport changes.
-                onPageChanged: (value) {
-                  print('Page changed: $value');
-                },
+                        /// Called whenever the page in the center of the viewport changes.
+                        onPageChanged: (value) {
+                          print('Page changed: $value');
+                        },
 
-                /// Auto scroll interval.
-                /// Do not auto scroll with null or 0.
+                        /// Auto scroll interval.
+                        /// Do not auto scroll with null or 0.
 
-                /// Loops back to first slide.
-                isLoop: false,
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Text(
-                "This is the detail page",
-                style: TextStyle(
-                  fontSize: 25,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Text(
-                'Total Reviews: 1000',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Row(
-                children: [
-                  Text(
-                    '300',
-                    style: TextStyle(
-                      fontSize: 22,
-                      color: AppColor.green,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    '300',
-                    style: TextStyle(
-                      decoration: TextDecoration.lineThrough,
-                      fontSize: 20,
-                      color: AppColor.darkGrey,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Text(
-                'About',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Text(
-                '  lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur',
-                style: TextStyle(
-                  fontSize: 18,
-                  color: AppColor.darkGrey,
-                ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              SingleChildScrollView(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    CommonButton(
-                      btnButtonWidth: double.infinity,
-                      btnText: 'Edit details',
-                      btnHeight: 50,
-                      btnOnPressed: () {
-                        Get.to(EditPageView());
-                      },
-                    ),
-                    SizedBox(
-                      height: 10,
-                    )
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
+                        /// Loops back to first slide.
+                        isLoop: false,
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        snapshot.data?.product?.name! ?? '',
+                        style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        'Total Reviews: 1000',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            'Price: ${snapshot.data?.product?.discount!}',
+                            style: TextStyle(
+                              fontSize: 22,
+                              color: AppColor.green,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            snapshot.data?.product?.price! ?? '',
+                            style: TextStyle(
+                              decoration: TextDecoration.lineThrough,
+                              fontSize: 20,
+                              color: AppColor.darkGrey,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        'About',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        snapshot.data?.product?.about! ?? '',
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: AppColor.darkGrey,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      SingleChildScrollView(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            CommonButton(
+                              btnButtonWidth: double.infinity,
+                              btnText: 'Edit details',
+                              btnHeight: 50,
+                              btnOnPressed: () {
+                                Get.to(EditPageView());
+                              },
+                            ),
+                            SizedBox(
+                              height: 10,
+                            )
+                          ],
+                        ),
+                      ),
+                    ],
+                  );
+                }
+              },
+            )),
       ),
     );
   }
