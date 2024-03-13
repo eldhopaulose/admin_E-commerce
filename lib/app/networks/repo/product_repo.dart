@@ -1,7 +1,6 @@
 import 'package:admin/app/networks/dio_client.dart';
 import 'package:admin/app/networks/endpoints.dart';
 import 'package:admin/app/networks/network_model/req/delete_product_image.dart';
-import 'package:admin/app/networks/network_model/req/edit_product_req.dart';
 import 'package:admin/app/networks/network_model/req/product_req.dart';
 import 'package:admin/app/networks/network_model/req/update_product_image.dart';
 import 'package:admin/app/networks/network_model/res/delete_product.dart';

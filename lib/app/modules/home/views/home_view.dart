@@ -25,7 +25,7 @@ class HomeView extends GetView<HomeController> {
       child: Scaffold(
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            Get.to(SellerView());
+            Get.to(const SellerView());
           },
           child: const Icon(
             Icons.add,
@@ -47,7 +47,7 @@ class HomeView extends GetView<HomeController> {
                   future: controller.fetchUserDetails(),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return Center(
+                      return const Center(
                         child: Text('Loading...',
                             style: TextStyle(
                               fontSize: 15,
@@ -64,7 +64,7 @@ class HomeView extends GetView<HomeController> {
                     return Container(
                       height: 120,
                       child: Padding(
-                        padding: EdgeInsets.only(top: 20, bottom: 10),
+                        padding: const EdgeInsets.only(top: 20, bottom: 10),
                         child: Padding(
                           padding: const EdgeInsets.only(left: 20.0),
                           child: Column(
@@ -77,7 +77,7 @@ class HomeView extends GetView<HomeController> {
                                 children: [
                                   Text(
                                     snapshot.data?.name ?? '',
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontSize: 30,
                                       fontWeight: FontWeight.bold,
                                       color: AppColor.green,
@@ -86,7 +86,7 @@ class HomeView extends GetView<HomeController> {
                                   PopupMenuButton(
                                     itemBuilder: (context) {
                                       return [
-                                        PopupMenuItem(
+                                        const PopupMenuItem(
                                           child: Text('Parchase History'),
                                           value: 1,
                                         ),
@@ -94,7 +94,7 @@ class HomeView extends GetView<HomeController> {
                                     },
                                     onSelected: (value) {
                                       if (value == 1) {
-                                        Get.to(HistoryView());
+                                        Get.to(const HistoryView());
                                       }
                                     },
                                   )
@@ -108,9 +108,9 @@ class HomeView extends GetView<HomeController> {
                                     fontSize: 20,
                                     color: AppColor.darkGrey,
                                   )),
-                              Spacer(),
-                              Expanded(
-                                child: Container(
+                              const Spacer(),
+                              const Expanded(
+                                child: SizedBox(
                                   height: 30.0,
                                   width: 30.0,
                                 ),
@@ -146,12 +146,12 @@ class HomeView extends GetView<HomeController> {
                     }
                     if (snapshot.hasError) {
                       MotionToast.error(
-                        title: Text("Error"),
+                        title: const Text("Error"),
                         description: Text(snapshot.error.toString()),
                       ).show(context);
                     }
                     return Padding(
-                      padding: EdgeInsets.only(
+                      padding: const EdgeInsets.only(
                           top: 10, bottom: 90, left: 10, right: 10),
                       child: GridView.count(
                         scrollDirection: Axis.vertical,
@@ -161,7 +161,7 @@ class HomeView extends GetView<HomeController> {
                         shrinkWrap: true,
                         childAspectRatio:
                             MediaQuery.of(context).size.width < 600 ? 0.57 : 1,
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         children: List.generate(snapshot.data!.products!.length,
                             (index) {
                           final name = snapshot.data!.products![index].name!;
@@ -180,7 +180,7 @@ class HomeView extends GetView<HomeController> {
 
                           // Your code here
                           return InkWell(
-                              onTap: () => Get.to(DetailPageView(),
+                              onTap: () => Get.to(const DetailPageView(),
                                   arguments:
                                       snapshot.data!.products![index].sId!),
                               child: Stack(
@@ -194,7 +194,7 @@ class HomeView extends GetView<HomeController> {
                                           originalPrice.truncate().toString(),
                                       pddicPrice:
                                           offerPrice.truncate().toString(),
-                                      pdImage: image ?? '',
+                                      pdImage: image,
                                       offer: percentageDiscount.truncate(),
                                     ),
                                   ),
@@ -220,7 +220,7 @@ class HomeView extends GetView<HomeController> {
                                           },
                                         );
                                       },
-                                      icon: Icon(
+                                      icon: const Icon(
                                         Icons.delete,
                                         color: Colors.black54,
                                         size: 30,

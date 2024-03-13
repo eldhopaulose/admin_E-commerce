@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:admin/app/data/colors.dart';
 import 'package:admin/app/widgets/offer_card.dart';
 import 'package:flutter/material.dart';
@@ -56,7 +54,7 @@ class ProductCard extends StatelessWidget {
               child: OfferCard(offer: offer),
             ),
             Positioned(
-              top: MediaQuery.of(context).size.width > 600 ? 250 : 197,
+              top: MediaQuery.of(context).size.width > 600 ? 250 : 220,
               bottom: 0,
               right: 0,
               left: 0,

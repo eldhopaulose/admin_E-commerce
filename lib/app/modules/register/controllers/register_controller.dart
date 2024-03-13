@@ -1,4 +1,5 @@
-import 'package:admin/app/modules/login/views/login_view.dart';
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:admin/app/networks/network_model/req/register_req.dart';
 import 'package:admin/app/networks/repo/auth_repo.dart';
 import 'package:flutter/material.dart';

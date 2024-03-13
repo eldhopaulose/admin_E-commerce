@@ -1,18 +1,15 @@
-import 'dart:io';
-import 'dart:math';
+// ignore_for_file: use_build_context_synchronously
 
+import 'dart:io';
 import 'package:admin/app/modules/detail_page/controllers/detail_page_controller.dart';
 import 'package:admin/app/modules/home/controllers/home_controller.dart';
 import 'package:admin/app/networks/network_model/req/delete_product_image.dart';
-import 'package:admin/app/networks/network_model/req/edit_product_req.dart';
 import 'package:admin/app/networks/network_model/req/product_req.dart';
 import 'package:admin/app/networks/network_model/req/update_product_image.dart';
 import 'package:admin/app/networks/repo/product_repo.dart';
-import 'package:admin/app/widgets/image_slider.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:horizontal_card_pager/card_item.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:motion_toast/motion_toast.dart';
 
@@ -60,24 +57,18 @@ class EditPageController extends GetxController {
   Future<void> selectImages() async {
     List<XFile>? selectedImages =
         await ImagePicker().pickMultiImage(); // Select multiple images
-    if (selectedImages != null) {
-      eImages.assignAll(selectedImages
-          .map((image) => File(image.path))
-          .toList()); // Convert XFile to File
-      // Convert XFile to File
-      update();
-    }
+    eImages.assignAll(selectedImages
+        .map((image) => File(image.path))
+        .toList()); // Convert XFile to File
+    // Convert XFile to File
+    update();
 
     print(selectedImages);
   }
 
   // Function to upload the selected images
   void uploadImages(BuildContext context, id) async {
-    // TODO: Implement image upload logic here
-    // You can use a package like http or dio to upload the images to a server
     for (var image in eImages) {
-      print(image.path);
-
       try {
         String uniqueFileName = '${DateTime.now().millisecondsSinceEpoch}.jpg';
         Reference referenceRoot = FirebaseStorage.instance.ref();
@@ -132,8 +123,6 @@ class EditPageController extends GetxController {
 
   onClickDelete(id, BuildContext context) async {
     ProductRepo repo = ProductRepo();
-    print('imageeeee');
-    print(deleteImages.value);
     final response = await repo.deleteProductImage(
         id,
         DeleteProductImageReq(

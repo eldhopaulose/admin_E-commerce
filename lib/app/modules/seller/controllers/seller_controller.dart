@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:admin/app/modules/home/controllers/home_controller.dart';
 import 'package:admin/app/networks/network_model/req/product_req.dart';
 import 'package:admin/app/networks/repo/product_repo.dart';
@@ -10,8 +9,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:motion_toast/motion_toast.dart';
 
 class SellerController extends GetxController {
-  //TODO: Implement SellerController
-
   RxList images = [].obs;
   RxList imgUrl = [].obs;
   final RxString showError = 'true'.obs;
@@ -43,12 +40,10 @@ class SellerController extends GetxController {
   Future<void> selectImages() async {
     List<XFile>? selectedImages =
         await ImagePicker().pickMultiImage(); // Select multiple images
-    if (selectedImages != null) {
-      images.assignAll(selectedImages
-          .map((image) => File(image.path))
-          .toList()); // Convert XFile to File
-      update();
-    }
+    images.assignAll(selectedImages
+        .map((image) => File(image.path))
+        .toList()); // Convert XFile to File
+    update();
     print(selectedImages);
   }
 

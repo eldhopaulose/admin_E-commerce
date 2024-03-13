@@ -4,7 +4,6 @@ import 'package:admin/app/widgets/commmon_button.dart';
 import 'package:admin/app/widgets/image_slider.dart';
 import 'package:admin/app/widgets/input_text_field.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 

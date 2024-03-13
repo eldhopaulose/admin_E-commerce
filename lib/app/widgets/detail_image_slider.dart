@@ -8,7 +8,7 @@ class DetailImageSlider extends StatelessWidget {
   Widget build(BuildContext context) {
     return Image.network(
       src,
-      fit: BoxFit.fill,
+      fit: BoxFit.fitHeight,
     );
   }
 }

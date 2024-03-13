@@ -2,7 +2,6 @@ import 'package:admin/app/data/colors.dart';
 import 'package:admin/app/modules/edit_page/views/edit_page_view.dart';
 import 'package:admin/app/widgets/commmon_button.dart';
 import 'package:admin/app/widgets/detail_image_slider.dart';
-import 'package:admin/app/widgets/image_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
 
@@ -65,7 +64,7 @@ class DetailPageView extends GetView<DetailPageController> {
                         children: [
                           for (var image in snapshot.data!.product!.image!)
                             DetailImageSlider(
-                              src: image!,
+                              src: image,
                             )
                         ],
 
