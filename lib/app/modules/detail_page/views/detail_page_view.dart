@@ -15,7 +15,7 @@ class DetailPageView extends GetView<DetailPageController> {
   @override
   Widget build(BuildContext context) {
     Get.put(DetailPageController());
-    String id = Get.arguments;
+    String id = Get.arguments.toString();
     print('id: $id');
     return Scaffold(
       appBar: AppBar(
@@ -31,8 +31,8 @@ class DetailPageView extends GetView<DetailPageController> {
       body: SingleChildScrollView(
         child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: FutureBuilder(
-              future: controller.fetchSingleProduct(id),
+            child: StreamBuilder(
+              stream: controller.AdminSIngleStream,
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return const Center(child: CircularProgressIndicator());
@@ -159,7 +159,14 @@ class DetailPageView extends GetView<DetailPageController> {
                               btnText: 'Edit details',
                               btnHeight: 50,
                               btnOnPressed: () {
-                                Get.to(EditPageView());
+                                Get.to(EditPageView(), arguments: [
+                                  snapshot.data?.product!.sId,
+                                  snapshot.data?.product!.name,
+                                  snapshot.data?.product!.about,
+                                  snapshot.data?.product!.price,
+                                  snapshot.data?.product!.discount,
+                                  snapshot.data?.product!.image as List<String>,
+                                ]);
                               },
                             ),
                             SizedBox(

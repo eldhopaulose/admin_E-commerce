@@ -8,6 +8,9 @@ enum EndPoints {
   getUserDetails,
   deleteProduct,
   getSingleProduct,
+  updateProduct,
+  deleteProductImage,
+  updateProductImage,
 }
 
 extension EndPointsData on EndPoints {
@@ -28,6 +31,12 @@ extension EndPointsData on EndPoints {
         path = "admin/products";
       case EndPoints.getSingleProduct:
         path = "admin/products";
+      case EndPoints.updateProduct:
+        path = "admin/products";
+      case EndPoints.deleteProductImage:
+        path = "admin/products/image";
+      case EndPoints.updateProductImage:
+        path = "admin/products/image";
     }
     return path;
   }
@@ -49,6 +58,12 @@ extension EndPointsData on EndPoints {
         type = ReqType.DELETE;
       case EndPoints.getSingleProduct:
         type = ReqType.GET;
+      case EndPoints.updateProduct:
+        type = ReqType.PUT;
+      case EndPoints.deleteProductImage:
+        type = ReqType.DELETE;
+      case EndPoints.updateProductImage:
+        type = ReqType.PUT;
     }
     return type;
   }
@@ -69,6 +84,12 @@ extension EndPointsData on EndPoints {
       case EndPoints.deleteProduct:
         token = false;
       case EndPoints.getSingleProduct:
+        token = false;
+      case EndPoints.updateProduct:
+        token = false;
+      case EndPoints.deleteProductImage:
+        token = false;
+      case EndPoints.updateProductImage:
         token = false;
     }
     return token;

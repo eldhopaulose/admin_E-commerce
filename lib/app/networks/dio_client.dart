@@ -55,9 +55,16 @@ class DioClient {
             data: data,
           );
           break;
+        case ReqType.PUT:
+          response = await _dio.put(
+            "$BASE_URl/${endPoints.path()}/$queryParameters",
+            data: data,
+          );
+          break;
         case ReqType.DELETE:
           response = await _dio.delete(
             "$BASE_URl/${endPoints.path()}/$queryParameters",
+            data: data,
           );
           break;
         default:
