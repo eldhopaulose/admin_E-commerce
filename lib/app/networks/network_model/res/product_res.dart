@@ -25,6 +25,7 @@ class Product {
   List<String>? image;
   String? about;
   String? price;
+  String? categories;
   String? discount;
   String? sId;
   int? iV;
@@ -34,6 +35,7 @@ class Product {
       this.image,
       this.about,
       this.price,
+      this.categories,
       this.discount,
       this.sId,
       this.iV});
@@ -43,6 +45,7 @@ class Product {
     image = json['image'].cast<String>();
     about = json['about'];
     price = json['price'];
+    categories = json['categories'];
     discount = json['discount'];
     sId = json['_id'];
     iV = json['__v'];
@@ -54,6 +57,7 @@ class Product {
     data['image'] = this.image;
     data['about'] = this.about;
     data['price'] = this.price;
+    data['categories'] = this.categories;
     data['discount'] = this.discount;
     data['_id'] = this.sId;
     data['__v'] = this.iV;

@@ -19,7 +19,15 @@ class SellerController extends GetxController {
   final TextEditingController priceController = TextEditingController();
   final RxBool isValid = false.obs;
   final List<String> list = <String>['30%', '50%', '70%', '80%'];
-
+  final List<String> categoriesList = <String>[
+    'Cotton Candy ',
+    'Pop Corn ',
+    'Dry Fruits',
+    'Curry Powders',
+    'Spices',
+    'Kerala Special',
+  ];
+  RxString dropdowncategoriesValue = 'Cotton Candy'.obs;
   RxString dropdownValue = '30%'.obs;
 
   @override
@@ -106,6 +114,7 @@ class SellerController extends GetxController {
           price: priceController.text,
           discount: discountedPrice.toString(),
           image: imgUrl.cast<String>(),
+          categories: dropdowncategoriesValue.value,
         ),
       );
       if (response != null && response.error == null) {

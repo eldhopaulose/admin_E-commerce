@@ -178,6 +178,21 @@ class SellerView extends GetView<SellerController> {
                                 value: value, label: value);
                           }).toList(),
                         )),
+                    Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: DropdownMenu<String>(
+                          width: MediaQuery.of(context).size.width * 0.92,
+                          initialSelection: controller.categoriesList.first,
+                          onSelected: (String? value) {
+                            controller.dropdowncategoriesValue.value = value!;
+                            print(value);
+                          },
+                          dropdownMenuEntries: controller.categoriesList
+                              .map<DropdownMenuEntry<String>>((String value) {
+                            return DropdownMenuEntry<String>(
+                                value: value, label: value);
+                          }).toList(),
+                        )),
                     SizedBox(height: 16.0),
                     Padding(
                       padding: const EdgeInsets.only(right: 12, left: 12),
