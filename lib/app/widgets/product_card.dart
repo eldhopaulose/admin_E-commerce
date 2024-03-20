@@ -38,13 +38,18 @@ class ProductCard extends StatelessWidget {
               left: MediaQuery.of(context).size.width > 600 ? 0 : 4,
               child: Padding(
                 padding: const EdgeInsets.only(left: 8, right: 8),
-                child: SizedBox(
+                child: Container(
                   height: MediaQuery.of(context).size.width > 600 ? 300 : 150,
                   width: MediaQuery.of(context).size.height > 600 ? 300 : 140,
-                  child: Image.network(
-                    pdImage,
-                    alignment: Alignment.center,
-                    fit: BoxFit.contain,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(20),
+                    ),
+                    child: Image.network(
+                      pdImage,
+                      alignment: Alignment.center,
+                      fit: BoxFit.contain,
+                    ),
                   ),
                 ),
               ),

@@ -78,11 +78,11 @@ class HomeView extends GetView<HomeController> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    snapshot.data?.name ?? '',
-                                    style: const TextStyle(
-                                      fontSize: 30,
+                                    "Hi ${snapshot.data!.name},",
+                                    style: GoogleFonts.oldStandardTt(
+                                      fontSize: 25,
+                                      color: Colors.green,
                                       fontWeight: FontWeight.bold,
-                                      color: AppColor.green,
                                     ),
                                   ),
                                   PopupMenuButton(
