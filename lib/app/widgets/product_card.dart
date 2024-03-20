@@ -1,6 +1,7 @@
 import 'package:admin/app/data/colors.dart';
 import 'package:admin/app/widgets/offer_card.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ProductCard extends StatelessWidget {
   final String pdName;
@@ -79,7 +80,7 @@ class ProductCard extends StatelessWidget {
                           pdName,
                           overflow: TextOverflow.ellipsis,
                           maxLines: 1,
-                          style: TextStyle(
+                          style: GoogleFonts.grenze(
                             fontWeight: FontWeight.w600,
                             fontSize: 18,
                             color: AppColor.Darkblue,
@@ -88,7 +89,7 @@ class ProductCard extends StatelessWidget {
                         Row(
                           children: [
                             Text(
-                              pddicPrice,
+                              '₹${pddicPrice}',
                               style: TextStyle(
                                 fontWeight: FontWeight.w800,
                                 fontSize: 16,

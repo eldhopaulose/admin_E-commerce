@@ -47,13 +47,15 @@ class HomeView extends GetView<HomeController> {
                   future: controller.fetchUserDetails(),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return const Center(
-                        child: Text('Loading...',
-                            style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w100,
-                              color: AppColor.green,
-                            )),
+                      return Center(
+                        child: Text(
+                          'Loading...',
+                          style: GoogleFonts.oldStandardTt(
+                            fontSize: 25,
+                            color: Colors.green,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       );
                     }
                     if (snapshot.hasError) {

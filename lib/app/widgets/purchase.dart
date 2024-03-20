@@ -43,13 +43,13 @@ class Purchase extends StatelessWidget {
                           borderRadius: BorderRadius.circular(50),
                         ),
                         child: Image.network(
-                          'https://media.istockphoto.com/id/1146517111/photo/taj-mahal-mausoleum-in-agra.jpg?s=612x612&w=0&k=20&c=vcIjhwUrNyjoKbGbAQ5sOcEzDUgOfCsm9ySmJ8gNeRk=',
+                          'https://firebasestorage.googleapis.com/v0/b/e-commerce-de666.appspot.com/o/profile%2F1710484184239.jpg?alt=media&token=2c4ab49d-69c5-4712-b9dc-e32a565d72d7',
                           height: 100,
                           fit: BoxFit.contain,
                         ),
                       ),
                       Text(
-                        'Taj Mahal',
+                        'Cotton Candy',
                         style: TextStyle(
                           color: AppColor.green,
                           fontSize: 10,
@@ -71,7 +71,7 @@ class Purchase extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Name: Taj',
+                    'Name: Eldho Paulose',
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 20,
@@ -82,7 +82,7 @@ class Purchase extends StatelessWidget {
                     height: 10,
                   ),
                   Text(
-                    'Price: 1000',
+                    'Price: ₹ 35',
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 12,
@@ -115,7 +115,7 @@ class Purchase extends StatelessWidget {
                     height: 10,
                   ),
                   Text(
-                    'Address: Agra, India',
+                    'Address: lorem ipsum dolor sit amet, consectetur adipiscing elit ',
                     style: TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.w600,
@@ -125,7 +125,7 @@ class Purchase extends StatelessWidget {
                     height: 10,
                   ),
                   Text(
-                    'Pincode: 282001',
+                    'Pincode: 686662',
                     style: TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.w600,
@@ -135,7 +135,7 @@ class Purchase extends StatelessWidget {
                     height: 10,
                   ),
                   Text(
-                    'Purchase Date: 12/12/2021',
+                    'Purchase Date: 20/3/2024',
                     style: TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.w600,

@@ -29,15 +29,15 @@ class LoginView extends GetView<LoginController> {
                 children: [
                   Positioned(
                     child: Image.asset(
-                      'assets/images/Laptop.png',
+                      'assets/images/logo2.png',
                       fit: BoxFit.cover,
                       width: MediaQuery.of(context).size.width,
-                      height: 469,
+                      height: 300,
                     ),
                   ),
                   Positioned(
                     left: 0,
-                    top: 439,
+                    top: 250,
                     child: Container(
                       height: 440,
                       width: MediaQuery.of(context).size.width,

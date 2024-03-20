@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
 
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../controllers/detail_page_controller.dart';
 
@@ -84,18 +85,8 @@ class DetailPageView extends GetView<DetailPageController> {
                       ),
                       Text(
                         snapshot.data?.product?.name! ?? '',
-                        style: TextStyle(
+                        style: GoogleFonts.grenze(
                           fontSize: 25,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        'Total Reviews: 1000',
-                        style: TextStyle(
-                          fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -105,7 +96,7 @@ class DetailPageView extends GetView<DetailPageController> {
                       Row(
                         children: [
                           Text(
-                            'Price: ${snapshot.data?.product?.discount!}',
+                            'Price: ₹ ${snapshot.data?.product?.discount!}',
                             style: TextStyle(
                               fontSize: 22,
                               color: AppColor.green,
@@ -116,7 +107,7 @@ class DetailPageView extends GetView<DetailPageController> {
                             width: 10,
                           ),
                           Text(
-                            snapshot.data?.product?.price! ?? '',
+                            '₹ ${snapshot.data?.product?.price!}' ?? '',
                             style: TextStyle(
                               decoration: TextDecoration.lineThrough,
                               fontSize: 20,
@@ -131,7 +122,7 @@ class DetailPageView extends GetView<DetailPageController> {
                       ),
                       Text(
                         'About',
-                        style: TextStyle(
+                        style: GoogleFonts.grenze(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
@@ -141,9 +132,9 @@ class DetailPageView extends GetView<DetailPageController> {
                       ),
                       Text(
                         snapshot.data?.product?.about! ?? '',
-                        style: TextStyle(
+                        style: GoogleFonts.lindenHill(
                           fontSize: 18,
-                          color: AppColor.darkGrey,
+                          color: const Color.fromARGB(255, 155, 150, 146),
                         ),
                       ),
                       SizedBox(

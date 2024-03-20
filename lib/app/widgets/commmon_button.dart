@@ -1,5 +1,6 @@
 import 'package:admin/app/data/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CommonButton extends StatelessWidget {
   final double btnButtonWidth;
@@ -26,7 +27,7 @@ class CommonButton extends StatelessWidget {
         ),
         child: Center(
           child: Text(btnText,
-              style: TextStyle(
+              style: GoogleFonts.grenze(
                 color: AppColor.white,
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
