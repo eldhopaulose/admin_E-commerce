@@ -1,12 +1,26 @@
+import 'dart:async';
+
+import 'package:admin/app/networks/network_model/res/booking_history_res.dart';
+import 'package:admin/app/networks/network_model/res/get_product_res.dart';
+import 'package:admin/app/networks/repo/history.dart';
+import 'package:admin/app/networks/repo/product_repo.dart';
 import 'package:get/get.dart';
 
 class HistoryController extends GetxController {
-  //TODO: Implement HistoryController
+  final StreamController<GetProductRes?> _featchDataControler =
+      StreamController<GetProductRes?>.broadcast();
+  Stream<GetProductRes?> get userHomeStream => _featchDataControler.stream;
 
-  final count = 0.obs;
+  final StreamController<BookingHistoryRes?> _featchBookingControler =
+      StreamController<BookingHistoryRes?>.broadcast();
+  Stream<BookingHistoryRes?> get bookingStream =>
+      _featchBookingControler.stream;
+
   @override
   void onInit() {
     super.onInit();
+    fetchProductList();
+    bookingDetails();
   }
 
   @override
@@ -19,5 +33,15 @@ class HistoryController extends GetxController {
     super.onClose();
   }
 
-  void increment() => count.value++;
+  Future fetchProductList() async {
+    final ProductRepo productRepo = ProductRepo();
+    final response = await productRepo.getProductList();
+    _featchDataControler.add(response);
+  }
+
+  Future bookingDetails() async {
+    final HistoryRepo historyRepo = HistoryRepo();
+    final response = await historyRepo.bookingHistory();
+    _featchBookingControler.add(response);
+  }
 }

@@ -11,6 +11,7 @@ enum EndPoints {
   updateProduct,
   deleteProductImage,
   updateProductImage,
+  bookingHistory,
 }
 
 extension EndPointsData on EndPoints {
@@ -37,6 +38,8 @@ extension EndPointsData on EndPoints {
         path = "admin/products/image";
       case EndPoints.updateProductImage:
         path = "admin/products/image";
+      case EndPoints.bookingHistory:
+        path = "customer/booking/getBooking";
     }
     return path;
   }
@@ -64,6 +67,8 @@ extension EndPointsData on EndPoints {
         type = ReqType.DELETE;
       case EndPoints.updateProductImage:
         type = ReqType.PUT;
+      case EndPoints.bookingHistory:
+        type = ReqType.GET;
     }
     return type;
   }
@@ -91,6 +96,8 @@ extension EndPointsData on EndPoints {
         token = false;
       case EndPoints.updateProductImage:
         token = false;
+      case EndPoints.bookingHistory:
+        token = true;
     }
     return token;
   }
